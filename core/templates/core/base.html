@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <title>{% block title %}{% endblock %} | 𝙰|𝙵</title>        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">  
+        
+        
+        
+    </head>
+
+    <body>
+        <nav class="py-6 px-6 flex justify-between items-center border-b border-gray-200">
+            
+            <a href="/" class="text-[32px] text-[#222222] font-semibold font-semibold">𝙰|𝙵 ArtFolio</a>
+
+            <div class="space-x-6">
+                <a href="{% url 'item:new' %}" class="text-lg text-gray-500 font-semibold hover:text-gray-900 hover:text-xl transition-size duration-500">New item</a>
+                <a href="{% url 'item:items' %}" class="text-lg text-gray-500 font-semibold hover:text-gray-900 hover:text-xl transition-size duration-500">Browse</a>
+                
+
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'conversation:inbox' %}" class="px-6 py-3 text-lg font-semibold bg-[#222222] text-white rounded-xl hover:bg-[#383838] transition-colors duration-500">Inbox</a>
+                    <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-lg text-[#222222] font-semibold bg-[#E9E9E9] border border-[#222222] rounded-xl hover:bg-[#222222] text-white transition-colors duration-500">Dashboard</a>
+                {% else %}
+                    <a href="{% url 'core:signup' %}" class="px-6 py-3 text-lg font-semibold bg-[#222222] text-white rounded-xl hover:bg-[#383838] transition-colors duration-500">Sign up</a>
+                    <a href="{% url 'core:login' %}" class="px-6 py-3 border border-[#222222] text-lg text-[#222222] font-semibold bg-[#E9E9E9] rounded-xl hover:bg-[#222222] hover:text-[#E9E9E9] transition-colors duration-500">Log in</a>
+                {% endif %}
+            </div>
+        </nav>
+
+        
+        
+
+        <!-- <div class=" h-[65vh]">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+              <div class="carousel-item active h-[65vh] object-cover">
+                <img src="https://plus.unsplash.com/premium_photo-1664438942574-e56510dc5ce5?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item h-[65vh]">
+                <img src="https://arts.mojarto.com/productImages/MA340495/primary/1200/MA340495.jpeg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item h-[65vh]">
+                <img src="https://images.unsplash.com/photo-1567061698906-fc74288ce52a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+        </div>  -->
+    
+
+
+        <div class="px-6 py-6">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer class="py-6 px-6 flex justify-between bg-white rounded-lg ">
+            <div class="w-2/3 pr-10">
+                <h3 class="mb-5 font-semibold text-[#222222] text-[5vh]">About</h3>
+
+                <p class="text-lg text-[#222222]">Welcome to ArtFolio, your online destination for exploring and collecting captivating artworks worldwide. Discover diverse styles, connect with artists, and immerse yourself in virtual exhibitions that bring art to life. Whether you're a seasoned collector or a passionate enthusiast, ArtFolio offers a dynamic platform to discover, appreciate, and acquire art from the comfort of your own home. Join our vibrant community and experience the future of art appreciation today.</p>
+
+            </div>
+            <div class="h-[30vh] w-[1px] bg-gray-600 rounded-lg mr-[5vw]"></div>
+            <div class="w-1/3">
+                <h3 class="mb-5 font-semibold text-[#010101] text-[5vh]">Contact Us</h3>
+                <div class="border border-[#010101] rounded-lg w-[20vw]">
+                    <p class="m-2">No.123, NIET GREATER NOIDA</p>
+                    <p class="m-2">7579232738</p>
+                    <p class="m-2">Codenova@gmail.com</p>
+                </div>
+
+                <ul class="space-y-2 flex gap-10 mt-[9vh]">
+                    <li><a href="#" class="text-lg text-[#222222] hover:text-[#010101]">About</a></li>
+                    <li><a href="{% url 'core:contact' %}" class="text-lg text-[#222222] hover:text-[#010101]">Contact</a></li>
+                    <li><a href="#" class="text-lg text-[#222222] hover:text-[#010101]">Privacy policy</a></li>
+                    <li><a href="#" class="text-lg text-[#222222] hover:text-[#010101]">Term of use</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    </body>
+</html>
