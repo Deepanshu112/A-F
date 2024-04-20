@@ -44,6 +44,7 @@
                     <a href="{% url 'item:detail' item.id %}">
                         <div class="relative rounded-2xl">
                             <img src="{{ item.image.url }}" class="rounded-t-xl">
+                            <span class="absolute bottom-[50%] right-[25%] text-[#fff] text-5xl font-semibold opacity-70 p-1">ArtFolio</span>
                             <div class="p-6 bg-[#222222] rounded-lg opacity-60 absolute bottom-0 right-0 text-white w-[100%]">
                                 <h2 class="text-2xl">{{ item.name }}</h2>
                                 <p class="text-white">Price: {{ item.price }}</p>
@@ -62,7 +63,7 @@
         <div class="grid grid-cols-3 gap-3">
             {% for category in categories %}
                 <div>
-                    <a href="#">
+                    <a href="{% url 'item:items' %}">
                         <div class="p-6 bg-[#383838] rounded-b-xl">
                             <h2 class="text-xl text-white">{{ category.name }}</h2>
                             <p class="text-white">{{ category.items.count }} items</p>
